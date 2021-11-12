@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head>
+    <title>addPage</title>
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+</head>
+
+<body>
+    <form onsubmit="addPage(event); return false;">
+        <label for="name">Name of the page: </label>
+        <input type="text" id="name">
+        <button type="submit" id="btn">Add Page</button>
+    </form>
+
+</body>
+<script>
+    console.log('xx')
+    var accessDB = ({
+        apiKey: "AIzaSyCAOLSfonX24gVsD3Ll95iLhikiiZ7daGI",
+        authDomain: "zila-dashboard-access.firebaseapp.com",
+        databaseURL: "https://zila-dashboard-access.firebaseio.com",
+        storageBucket: "zila-dashboard-access.appspot.com",
+    });
+    const app = firebase.initializeApp(accessDB, 'Secondary');
+
+    function addPage(event) {
+        const dbRefObject = app.database().ref('Access/');
+        var pageName = document.getElementById("name").value;
+        event.preventDefault()
+        if (pageName.trim === "") {
+            alert("Please enter a valid page name");
+            return;
+        }
+        var data = {
+            delete: 0,
+            edit: 0,
+            name: pageName,
+            view: 0
+        }
+        //const dbRefObject = accessDB.database().ref('Access/3557');
+
+        dbRefObject.once('value', function (s) {
+            var employees = s.val();
+            console.log(employees);
+            var updates = {};
+            for (var key in employees) {
+                updates['/' + key + '/41' ] = data;
+                console.log(key);
+            }
+            //var newUsers = {}
+            //for(var key in users) {
+            //    newUsers[key+'somekey'] = 2
+            //}
+            dbRefObject.update(updates);
+            alert("Done");
+        });
+
+    }
+</script>
+</html>

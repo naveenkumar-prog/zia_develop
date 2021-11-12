@@ -1,0 +1,246 @@
+
+
+<!-- Products Page where we can edit, delete or add new product -->
+
+<!DOCTYPE html>
+<!--disabled right click to prevent viewing page source-->
+<!--<html oncontextmenu="return false">-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="title icon" href="images/zila3.png">
+        <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="editProduct.css">
+        <title>Products</title>
+        <script src="offer_var.js"></script>
+        <script src="editProduct1.js"></script>
+        <script src='rearrangeProductImgs.js'></script>
+        <script src="checkLogin.js"></script>
+        <script src='checkView.js'></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+        <script>
+            function passval(){
+                var sel_cat = document.getElementById("locality-dropdown").value;
+                var sel_sub_cat = document.getElementById("demo").value;
+                localStorage.setItem("dcat_value",sel_cat);
+                localStorage.setItem("dsub_cat_value",sel_sub_cat);
+
+                return true;
+            }
+        </script>
+
+    </head>
+
+    <body>
+        <style>
+            .removeImage{
+                cursor: pointer;
+            }
+            .draggable{
+                cursor: move;
+            }
+            .demo_main{
+                display: none;
+            }
+        </style>
+
+        <div id="loader"></div>
+
+        <!-- Top Navigation bar -->
+
+        <div class="top">
+            <div>
+                <p class="txt">Search: <input id="search-input" type="text"  value=""></p>
+
+            </div>
+            <div class="searchBtn">
+                <button class="btnSearchs" onclick="buildSearchTables()" style="height: 2.7rem; margin-top:100%; margin-left: -20%;"><i class="fas fa-search fa-1x text-dark" style="cursor: pointer;" id="searchIcon"></i></button>
+            </div>
+            <div class="uploadLink">
+                <button onclick="window.open('uploadProduct.html', '_blank')" class="addProdBtn">Add a new product</button>
+            </div>
+            <div class="uploadLink">
+                <button onclick="window.open('newEditProduct', '_blank')" class="addProdBtn">New Products Page</button>
+            </div>
+            <div class="uploadLink">
+                <button onclick="window.open('multipleProductsUpload', '_blank')" class="addProdBtn">Bulk product upload</button>
+            </div>
+
+            <div class="uploadLink">
+                <button class="addProdBtn" data-toggle="modal" data-target="#procedure"><i class="fa fa-filter"></i></button>
+            </div>
+
+            <div class="pop-up" onscroll="" >
+                <div class="modal fade" id="procedure" style="height:550px;width: 515px;overflow-x:hidden;
+                     overflow-y:auto; position: fixed;top: 50%;left: 50%;transform: translate(-50%, -50%);">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Filter</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+
+                                <div style="margin: 20px;">
+
+                                    <div>
+                                        <label>Select Category: </label>
+                                        <select id="locality-dropdown" name="locality" onchange="getCombo(this)">
+
+                                        </select>
+
+                              
+
+                                    </div>
+
+
+                                    <div id="demo_main">
+                                        <label>Select Sub Category: </label>
+                                        <select id="demo" class="demo"></select>
+                                    </div>
+
+
+
+                                </div>
+
+
+
+                                <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="selectLanguage" id=nproducts>
+                <label for="language" class="labelLang">No. of Products : </label>
+                <p id="filter"></p><p id="default_count">
+                    <script>
+                        getCombo2(0, 0);
+                    </script>
+                </p>
+            </div>
+
+            <div class="selectLanguage">
+                <label for="language" class="labelLang">Choose a language: </label>
+                <select id="selectLang" onchange="buildTable()">
+                    <option value="english"> English</option>
+                    <option value="hindi"> Hindi</option>
+                    <option value="tamil"> Tamil</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Main Table  -->
+
+        <table class="table" id="table-1">
+            <!--
+            <div id="myData"></div>
+             onchange="window.location.reload()"
+            -->
+            <thead>
+                <tr>
+            <div class="spin" id="overlay" style="display: none;">
+                <div class="spinner-border text-dark" style="width:65px; height: 65px"></div>
+            </div>
+            <th>Option</th>
+            <th>Product Id</th>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Actual amount</th>
+            <th>Discount %</th>
+            <th>Final amount</th>
+            <th>Category Id</th>
+            <th>Sub-category Id</th>
+            <th>Seller Id</th>
+            <th>Old discount</th>
+            <th>Product count</th>
+            <th>Size</th>
+            <th>Color</th>
+            <th>Brand</th>
+            <th>Brand Id</th>
+            <th>Fabric</th>
+            <th>Returnable</th>
+            <th>Max day return</th>
+            <th>Hashtag</th>
+            <th>Transfer Price</th>
+            <th>Store Partner Commission</th>
+        </tr>
+    </thead>
+    <tbody id="myTable">
+    </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade in" id="multiImageModal" tabindex="-1" aria-hidden="true" style="width: auto;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Images of product ID -<span id="idInModal"></span></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center" id="multiImageModalBody">
+            </div>
+            <label style="margin: 5px;" for="files">Upload more images:</label>
+            <div class="modal-footer">
+
+                <input type="file" id="imgs" onchange="imgsUpload()" multiple>
+                <button type="button" disabled id="imgsUploadBtn" class="btn btn-secondary" onclick="imgsUploadBtn()" data-dismiss="modal">Upload selected images</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade in" id="descPreviewModal" tabindex="-1" aria-hidden="true" style="width: auto;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Description preview</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="descPreviewModalBody">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer to search by page -->
+
+<div class="container">
+    <div id="pagination-wrapper"></div>
+    <br>
+    <div id='goto'>
+        <label>Go to page : </label>&nbsp;&nbsp;
+        <input type="text" name="Go to Page No" id="page_no" autocomplete="off" style="width:3rem">
+        <button type="submit" id="gopagenumber" onclick="getPageNo()"><i class="fas fa-angle-double-right"></i></button>
+    </div>
+</div>
+<div id="loaderV"></div>
+<script src='textFormat.js'></script>
+<script>
+
+</script>
+
+
+<script src="editProduct.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="ISO-8859-1">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="title icon" href="images/zila3.png">
+
+
+
+        <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
+
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <!-- <link href= 
+    'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ 
+    ui-lightness/jquery-ui.css'  -->
+        <!-- rel='stylesheet'>  -->
+
+        <!-- <script src= 
+    "https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" > 
+        </script>  -->
+
+        <!-- <script src= 
+    "https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" > 
+        </script>
+        <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="videoApprove.css">
+        <title>Live Streams</title>
+        <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+        <script src="checkLogin.js"></script>
+        <script src='checkView.js'></script>
+
+    </head>
+
+    <body>
+
+        <div class="header">
+            <h1>Live Streams</h1>
+            <label for="datePicker">Date:</label> 
+            <input type="text" id="datePicker">
+            <label for="status">Status:</label>  
+            <select id="status" onchange="change(this.value)">
+                <option value="0">Not Approved</option>
+                <option selected value="1">Approved</option>
+                <option value="2">Rejected</option>
+            </select>
+        </div>
+
+        <div >
+            <table class="table" id='table'>
+                <thead>
+                    <tr>
+                        <th>SNO</th>
+                        <th>Name</th>
+                        <th>Seller ID</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Allot time</th>
+                        <th>Time</th>
+                        <th>Products</th>
+                        <th>Thumbnail</th>
+                        <th>Current Status</th>             
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                </tbody>
+            </table>			
+        </div>
+        <script src="filterLiveStreams.js"></script>
+    </body>
+</html>

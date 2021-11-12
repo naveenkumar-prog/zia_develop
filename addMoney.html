@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="getUsers.css" rel="stylesheet">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+        <title>Add Money</title>
+        <script src="offer_var.js"></script>
+        <script src="addMoney.js"></script>
+        <!-- To check Login details -->
+        <script src="checkLogin.js"></script>
+        <!-- To check authority access -->
+        <script src='checkView.js'></script>
+
+    </head>
+    <body>
+
+        <form id="form" onsubmit="addMoneyBtn(event);">
+            <label for="credit_amt" class="formElement__label" >Credit Amount (₹): </label>
+            <input type="number" class="formElement__input" required placeholder="0" id="credit_amt">
+            <br>
+            <br>
+            <label for="debit_amt" class="formElement__label">Debit Amount (₹): </label>
+            <input type="number" class="formElement__input" required placeholder="0" id="debit_amt">
+            <br>
+            <br>
+            <label for="order_id" class="formElement__label">Order ID : </label>
+            <input type="text" class="formElement__input" required placeholder="Order ID" id="order_id">
+            <br>
+            <button type="submit" class="calcBtn">Add money</button>           
+        </form>
+
+    </body>
+</html>

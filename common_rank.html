@@ -1,0 +1,171 @@
+<!-- Page to set the Offers Rank -->
+
+<!DOCTYPE html>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="categories.css">
+        <title>Offers</title>
+        <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+
+        <!-- To check Login -->
+        <script src="checkLogin.js"></script>
+
+        <!-- To check Authority access -->
+        <script src='checkView.js'></script>
+
+    </head>
+    <style>
+
+    table, th, td {
+  border: 1px solid black;
+}
+td,th {
+  text-align: center;
+}
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    table-layout: fixed;
+    margin-top: auto;
+    padding-top: 20%;
+  width: 50%;
+  
+  background-color: white;  
+}
+form {
+    width: 300px;
+    margin: 0 auto;
+}
+p{
+    font-size: 26px;
+    color: white;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+</style>
+    <body>
+
+
+        
+        
+        <ol id="list">
+            <table>
+
+                <th>
+                    Operation ID
+                </th>
+                <th> Offers</th>
+
+                <tr>
+                    <td>1.</td>
+                    <td>Product Under Offer</td>
+
+                </tr>
+                <tr>
+                    <td>2.</td>
+                    <td>Buy One Get One Offer</td>
+
+                </tr>
+                <tr>
+                    <td>3.</td>
+                    <td>Products Offer</td>
+
+                </tr>
+                <tr>
+                    <td>4.</td>
+                    <td>Product Sub category Offer</td>
+
+                </tr>
+                <tr>
+                    <td>5.</td>
+                    <td>Discounnt Upto Offer</td>
+
+                </tr>
+                <tr>
+                    <td>6.</td>
+                    <td>Daily Offer</td>
+
+                </tr>
+                <tr>
+                    <td>7.</td>
+                    <td>Weekly Offer</td>
+
+                </tr>
+                <tr>
+                    <td>8.</td>
+                    <td>Promograph</td>
+
+                </tr>
+                <tr>
+                    <td>9.</td>
+                    <td>Monthly Offer</td>
+
+                </tr>
+                 <tr>
+                    <td>10.</td>
+                    <td>Brand Offer</td>
+
+                </tr>
+                <tr>
+                    <td>11.</td>
+                    <td>Hashtag Offer</td>
+
+                </tr>
+            </table>
+        </ol>
+
+
+        <h3>Enter the corresponding Operation ID for which offer you need to change the rank</h3>
+         <div class="btn">
+            <button onclick="myFunction()">Try it</button>
+        </div>
+        <br><br>
+                <p id="demo"></p>
+
+     <!--               <input type="button" onclick="window.location.href='getoffers.html';" value="w3docs" />
+-->
+
+   <!--     <form id="form1" style="">
+  <label for="Oid">Operation ID:</label>
+  <input type="text" id="Oid" ><br><br>
+
+        <div class="btn">
+            <button onclick="myFunction()">Enter</button>
+        </div>
+</form>
+
+-->
+
+
+
+
+
+<script>
+function myFunction() {
+  var ID = prompt("Please enter ID", "1");
+  console.log(ID);
+    if (ID >=1 && ID<=11) {
+
+    localStorage.setItem("myValue",ID);
+   window.location.href="getoffers.html";
+
+  }
+  else{
+    alert("Please enter valid operation ID")
+  }
+}
+</script>
+
+
+
+        
+
+    </body>
+</html>

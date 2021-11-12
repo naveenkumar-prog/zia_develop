@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <link rel="title icon" href="images/zila3.png">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="productUnderoff.css" rel="stylesheet">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+        <title>Discount Upto</title>
+        <script src="checkLogin.js"></script>
+        <script src='checkView.js'></script>
+
+    </head>
+    <body>
+        <div>
+            <button type="button" class="m-5 btn btn-primary btn-small" style="width: 15rem;" data-toggle="modal" data-target="#newOffer">Add New Offer</button>
+            <button class="rearrCatBtn" onclick='location.href = "discountupto_rank.html"'>Rearrange Offers by rank</button>
+
+            <div class="modal fade" id="newOffer" tabindex="-1" role="dialog" aria-labelledby="newOfferLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="newOfferLabel">Add New Offer</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form">
+                                <table>
+                                    <tr>
+                                        <td><label class="labels">Discount</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                        <td><input type="text" id="amount" class="inputs"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label class="labels">Image</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                        <td><input type="file" class="inputs" id="graphics"></td>
+                                    </tr>
+                                </table>                
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <div class="send-btn">
+                                <button type="button" onclick="addOff()" class="btn btn-info">Add Offer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="uppgraph" tabindex="-1" role="dialog" aria-labelledby="uppgraph" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="uppgraphLabel">Update Graphic</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form">
+                                <table>
+                                    <tr>
+                                        <td><label class="labels">Image</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                        <td><input type="file" class="inputs" id="graphicss"></td>
+                                    </tr>
+                                </table>                
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <div class="send-btn">
+                                <button type="button" onclick="uppoff()" class="btn btn-info">Update Graphic</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <table class="table table-striped">
+                <thead class="bg-info">
+                    <tr>
+                        <th id="userTypeSno">S.No</th>
+                        <th>Offer ID</th>
+                        <th>Image</th>
+                        <th>Update Graphic</th>
+
+                        <th>Rank</th>
+                        <th>Operation</th>
+                        <th>Discount</th>
+                        <th>Delete Offer</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tableBody">
+                </tbody>
+            </table>
+
+            <div class="container ">
+                <div id="pagination-wrapper"></div>
+            </div>
+        </div>
+
+        <script src="offer_var.js"></script>
+
+        <script src='discountupto.js'></script>
+    </body>
+</html>

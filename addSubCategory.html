@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="ISO-8859-1">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Add sub-category</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="addSubCategory.css">
+        <script src="offer_var.js"></script>
+        <script src="checkLogin.js"></script>
+
+    </head>
+    <body>
+
+        <div class="header">
+            <h3>Add a new sub-category</h3>
+        </div>
+        <hr>
+        <div class="content">
+            <div class="form">
+                <table>
+                    <tr>
+                        <td><label class="labels">Name: </label></td>
+                        <td><input type="text" id="subCatName" class="inputs" required></td>
+                    </tr>
+                    <tr>
+                        <td><label class="labels">Hindi name: </label></td>
+                        <td><input type="text" id="subCatHindiName" class="inputs" required></td>
+                    </tr>
+                    <tr>
+                        <td><label class="labels">Image: </label></td>
+                        <td class="chooseImage"><input type="file" name="images" id="subCatImage" required></td>
+                    </tr>
+                </table>
+                <hr>
+                <div class="submit-btn">
+                    <input type="submit" class="add-btn" onclick="addSubCategory()" value="Add sub-category">
+                </div>
+            </div>
+        </div>
+
+        <script src="addSubCategory.js"></script>
+
+    </body>
+</html>

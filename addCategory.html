@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="ISO-8859-1">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Add category</title>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="addCategory.css">
+        <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+
+        <script src="offer_var.js"></script>
+       <!-- <script src="addCategory.js"></script>  -->
+
+        <!-- To check Login -->
+        <script src="checkLogin.js"></script>
+
+        <!-- To check Authority access -->
+        <script src='checkView.js'></script>
+
+    </head>
+    <body>
+
+        <div class="header">
+            <h3>Add a new category</h3>
+        </div>
+        <hr>
+        <div class="content">
+            <div class="form">
+                <table>
+                    <tr>
+                        <td><label class="labels">Name: </label></td>
+                        <td><input type="text" id="catName" class="inputs" required></td>
+                    </tr>
+                    <tr>
+                        <td><label class="labels">Hindi name: </label></td>
+                        <td><input type="text" id="catHindiName" class="inputs" required></td>
+                    </tr>
+                    <tr>
+                        <td><label class="labels">Tamil name: </label></td>
+                        <td><input type="text" id="catTamilName" class="inputs" required></td>
+                    </tr>
+                    <tr>
+                        <td><label class="labels">Image: </label></td>
+                        <td><input type="file" name="images" id="catImage" required></td>
+                    </tr>
+                    <tr>
+                        <td><label class="labels">Min age: </label></td>
+                        <td><input type="text" id="catMinAge" class="inputs" required></td>
+                    </tr>
+                    <tr>
+                        <td><label class="labels">Max age: </label></td>
+                        <td><input type="text" id="catMaxAge" class="inputs" required></td>
+                    </tr>
+                    <tr>
+                        <td><label class="labels">Of videos: </label></td>
+                        <td><input type="radio" name="ofVid" class="options" value="1" required> Yes
+                            <input type="radio" name="ofVid" class="options" value="0"> No</td>
+                    </tr>
+                    <tr>
+                        <td><label class="labels">Available in: </label></td>
+                        <td><input type="text" id="availableIn" class="inputs" required></td>
+                    </tr>
+                </table>
+                <hr class="line">
+                <div class="submit-btn">
+                    <input type="submit" class="add-btn" onclick="addCategory()" value="Add category">
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

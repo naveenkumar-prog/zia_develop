@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="ISO-8859-1">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <title>Add notifications</title>
+        <link rel="stylesheet" href="addNotifications.css">
+        <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+        <script src="offer_var.js"></script>
+        
+        <!-- To check login details -->
+        <script src="checkLogin.js"></script>
+        <!-- To check Authority access -->
+        <script src='checkView.js'></script>
+
+    </head>
+    <body>
+        <div class="d-flex justify-content-center m-3">
+            <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSkroTBu3oD8Anv81bdw73GgoigHmWsDBtA3v-QWbr8u_PWSWS-yZiuGQjAhoq45gkLV_qxhKi1vngh/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+        </div>
+        <div class="header">
+            <h1>Add new notification</h1>
+        </div>
+        <hr>
+        <div class="content">
+            <div class="form">
+                <table>
+                    <tr>
+                        <td><label class="labels">Title</label></td>
+                        <td><input type="text" id="notifTitle" class="inputs"></td>
+                    </tr>
+                    <tr>
+                        <td><label class="labels">Topic</label></td>
+                        <td><input type="text" id="notifTopic" class="inputs"></td>
+                    </tr>
+                    <tr>
+                        <td><label class="labels">Description</label></td>
+                        <td><textarea rows="6" cols="50" id="notifBody"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td><label class="labels">Image</label></td>
+                        <td><input type="file" class="inputs" id="notifImage"></td>
+                    </tr>
+                </table>
+                <hr>
+                <div class="send-btn">
+                    <input type="button" value="Add notification" onclick="sendNotif()" class="btn btn-info">
+                </div>
+
+            </div>
+        </div>
+
+    </body>
+</html>

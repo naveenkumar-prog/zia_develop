@@ -1,0 +1,38 @@
+<!-- Page to set the Offers Rank -->
+
+<!DOCTYPE html>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="categories.css">
+        <title>Offers</title>
+        <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+
+        <!-- To check Login -->
+        <script src="checkLogin.js"></script>
+
+        <!-- To check Authority access -->
+        <script src='checkView.js'></script>
+
+    </head>
+    <body>
+        <h1>Offers</h1>
+        <h3>Rearrange the offers to change their rank</h3>
+        <div class="list">
+            <input type="text" class="input" placeholder="Add a new offer" hidden/>
+            <span class="add" hidden>+</span>
+        </div>
+        <ol id="list">
+        </ol>
+
+        <div class="btn">
+            <input type="button" value="Save" class="btn btn-primary save-btn" onclick="setNewRank()" id="save"/>
+        </div>
+
+        <script src="getoffers.js"></script>
+
+    </body>
+</html>

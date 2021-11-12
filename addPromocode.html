@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="title icon" href="images/zila3.png">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+        <title>Add Promo code</title>
+        <script src="checkLogin.js"></script>
+        <script src='checkView.js'></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <!-- <script src="promocodes.js"></script> -->
+
+    </head>
+    <body>
+        <style>
+            .input{
+                margin: 5px 0 5px;
+            }
+        </style>
+        <h1 class="container display-4">Add a new promocode</h1>
+        <form class="container d-flex flex-column" onsubmit="addPromocode(event)">
+            <label for="promo_code" class="input">Promo code:</label>        
+            <input class="form-control input" id="promo_code" type="text" required>
+            <label for="description" class="input">Description:</label>
+            <input class="form-control input" id="description" type="text" required>
+            <label for="flat_discount" class="input">Flat Discount:</label>        
+            <input class="form-control input" id="flat_discount" type="text" required>
+            <label for="percentage_discount" class="input">Percentage Discount:</label>        
+            <input class="form-control input" id="percentage_discount" type="text" required>
+            <label for="start_date" class="input">Start date:</label>
+            <input class="form-control input" id="start_date" type="text" required>
+            <label for="end_date" class="input">End date:</label>
+            <input class="form-control input" id="end_date" type="text" required>
+            <label for="userId" class="input">User ID:</label>
+            <input class="form-control input" id="userId" type="number">
+            <label for="isactive" class="input">Is Active:</label>
+            <select class="form-control input" id="isactive" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+            <label for="max_avail_time" class="input">Maximum avail time:</label>
+            <input class="form-control input" id="max_avail_time" type="text" required>
+            <label for="min_amount_to_avail_discount" class="input">Minimum amount to avail discount(in ₹):</label>
+            <input class="form-control input" id="min_amount_to_avail_discount" type="number" required>
+
+            <button class="btn btn-primary btn-block my-4" type="submit">Add</button>
+        </form>
+
+        <script>
+            var start_date;
+            var end_date;
+            $(document).ready(function () {
+                $("#start_date").datepicker({dateFormat: 'yy-mm-dd'});
+                $("#start_date").on("change", function () {
+                    start_date = $(this).val() + " 00:00:00";
+                    //console.log(start_date);                
+                });
+                $("#end_date").datepicker({dateFormat: 'yy-mm-dd'});
+                $("#end_date").on("change", function () {
+                    end_date = $(this).val() + " 00:00:00";
+                    //console.log(end_date);                
+                });
+                if (sessionStorage.getItem('pUserId') != undefined) {
+                    document.getElementById('userId').value = sessionStorage.getItem('pUserId');
+                    document.getElementById('userId').disabled = true;
+                }
+
+            });
+            console.log('vv')
+            function addPromocode(event) {
+                event.preventDefault();
+                var myHeaders = new Headers();
+                myHeaders.append("userid", "3513");
+                myHeaders.append("sessionkey", "AyvRZMmvXUZpKxyYat3qeiD2MRjD66HM");
+                myHeaders.append("languagetype", "1");
+                myHeaders.append("usertype", "2");
+                myHeaders.append("Authorization", "Basic dGVjaHppbGE6dGVjaHppbGFAMjAxOSFAI3RlY2g=");
+                myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+                var urlencoded = new URLSearchParams();
+                console.log(start_date.toString());
+                console.log(end_date.toString());
+                urlencoded.append("promo_code", document.getElementById("promo_code").value);
+                urlencoded.append("max_avail_time", document.getElementById("max_avail_time").value);
+                urlencoded.append("start_date", start_date.toString());
+                urlencoded.append("end_date", end_date.toString());
+                urlencoded.append("flat_discount", document.getElementById("flat_discount").value);
+                urlencoded.append("percentage_discount", document.getElementById("percentage_discount").value);
+                urlencoded.append("min_amount_to_avail_discount", document.getElementById("min_amount_to_avail_discount").value);
+                urlencoded.append("discription", document.getElementById("description").value);
+                urlencoded.append("isactive", document.getElementById("isactive").value);
+                if (document.getElementById('userId').value.trim() == "") {
+                    urlencoded.append("user_id", 0);
+                } else {
+                    urlencoded.append("user_id", parseInt(document.getElementById('userId').value.trim(), 10));
+                }
+                //console.log('vv');
+                console.log(parseInt(document.getElementById('userId').value.trim(), 10));
+                //console.log(urlencoded["end_date"]);
+
+                var requestOptions = {
+                    method: 'POST',
+                    headers: myHeaders,
+                    body: urlencoded,
+                    redirect: 'follow'
+                };
+
+                // const proxyurl = "https://cors-anywhere.herokuapp.com/";
+                var url = "http://api.myzila.com/Promocode";
+                fetch(url, requestOptions)
+                        .then(response => response.json())
+                        .then(result => {
+                            console.log(result)
+                            if (result.status == 200) {
+                                alert("Promo code added successfully!");
+                                window.location.reload();
+                            } else {
+                                alert("Could not add promo code.")
+                            }
+                        })
+                        .catch(error => {
+                            console.log('error', error);
+                            alert("Error");
+                        });
+
+            }
+        </script>
+    </body>
+</html>

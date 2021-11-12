@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <link rel="title icon" href="images/zila3.png">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="getUsers.css" rel="stylesheet">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+        <title>Contact Directory</title>
+        <script src="offer_var.js"></script>
+        <script src="checkLogin.js"></script>
+        <script src='checkView.js'></script>
+
+    </head>
+    <body style="display: flex; justify-content: center; align-items: center; flex-direction:column">
+        <style>
+            .spin {
+                background:lightgray;
+                color: #666666;
+                position: fixed;
+                height: 100%;
+                width: 100%;
+                z-index: 5000;
+                top: 0;
+                left: 0;
+                float: left;
+                text-align: center;
+                padding-top: 25%;
+                opacity: .80;
+            }
+        </style>
+        <!-- <div class="spin" id="overlay">
+          <div class="spinner-border text-dark" style="width:65px; height: 65px"></div>
+      </div> -->
+        <h2 class="display-4">Contact Directory</h2>
+        <div style="margin: 20px;">
+            <label style="font-size: 25px;">Select user type: </label>
+            <!-- <select id="select" onchange="getGetContacts(this.value)">
+                    <option value="1" selected>Users</option>
+                    <option value="2">Influencers</option>
+                    <option value="3">Community leaders</option>
+            </select> -->
+            <button type="button" class="m-5 btn btn-primary btn-small" style="width: 15rem;" onclick="getContactsusers(date = 0)">Users</button>
+            <button type="button" class="m-5 btn btn-primary btn-small" style="width: 15rem;" onclick="getContactsinflu(date = 0)">Influencers</button>
+            <button type="button" class="m-5 btn btn-primary btn-small" style="width: 15rem;" onclick="getContactscomm(date = 0)">Community leaders</button>
+            <br><br>
+            <b><h2 id="usertypes" style="text-align: center;"></h2></b>
+        </div>
+        <div style="display: flex; justify-content: around; align-items: center;">
+            <label style="display: none;" for="masterCheck">Select all - </label>
+            <input style="display: none;" type="checkbox" id="masterCheck">
+            <button type="button" class="m-5 btn btn-primary btn-small" data-toggle="modal" data-target="#exampleModal">
+                Send Notification
+            </button>
+            <button type="button" class="m-5 btn btn-primary btn-small" data-toggle="modal" data-target="#modal">
+                Add Money
+            </button>
+            <button type="button" class="m-5 btn btn-primary btn-small" data-toggle="modal" data-target="#msgModal">
+                Send Message
+            </button>
+            <button type="button" class="m-5 btn btn-primary btn-small" data-toggle="modal" data-target="#msgAllModal">
+                Send Message to all
+            </button>
+            <p>Date: <input type="text" id="datepicker"></p>
+        </div>
+        <h3 class="display-6" >Total number of results: <span id="noResults"></span></h3>
+
+        <div id="usertable">
+            <table class="table table-striped">
+                <thead class="bg-info">
+                    <tr>
+                        <th>S.No</th>
+                        <th>Check</th>
+                        <th>Name</th>
+                        <th>Number</th>
+                        <th>User ID</th>
+                        <th>Contact list</th> 
+                    </tr>
+                </thead>		
+                <tbody id="tableBodyuser"></tbody> 	
+            </table>
+        </div>
+
+
+        <div id="influtable">
+            <table class="table table-striped">
+                <thead class="bg-info">
+                    <tr>
+                        <th>S.No</th>
+                        <th>Check</th>
+                        <th>Name</th>
+                        <th>Number</th>
+                        <th>User ID</th>
+                        <th>Contact list</th> 
+                    </tr>
+                </thead>		
+                <tbody id="tableBodyinflu"></tbody> 	
+            </table>
+        </div>
+
+        <div id="commtable">
+            <table class="table table-striped">
+                <thead class="bg-info">
+                    <tr>
+                        <th>S.No</th>
+                        <th>Check</th>
+                        <th>Name</th>
+                        <th>Number</th>
+                        <th>User ID</th>
+                        <th>Contact list</th> 
+                    </tr>
+                </thead>		
+                <tbody id="tableBodycomm"></tbody> 	
+            </table>
+        </div>
+
+
+
+
+        <div class="container ">
+            <div id="pagination-wrapper"></div>
+        </div>
+        <!-- Button trigger modal -->
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Send Notification</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form">
+                            <table>
+                                <tr>
+                                    <td><label class="labels">Title</label></td>
+                                    <td><input type="text" id="notifTitle" class="inputs"></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="labels">Description</label></td>
+                                    <td><textarea rows="6" cols="50" id="notifBody"></textarea></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="labels">Image</label></td>
+                                    <td><input type="file" class="inputs" id="notifImage"></td>
+                                </tr>
+                            </table>                
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <div class="send-btn">
+                            <button type="button" onclick="notify()" class="btn btn-info">Send now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog" >
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Money</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form" onsubmit="getAddMoney(event)">
+                            <h3 class="display-5 my-3" >Adding money to selected users <span id="userh3"></span></h3>
+                            <label for="credit_amt" class="formElement__label" >Credit Amount (₹): </label>
+                            <input type="number" class="formElement__input" required placeholder="0" id="credit_amt">
+                            <br>
+                            <br>
+                            <label for="debit_amt" class="formElement__label">Debit Amount (₹): </label>
+                            <input type="number" class="formElement__input" placeholder="0" id="debit_amt">
+                            <br>
+                            <br>
+                            <label for="order_id" class="formElement__label">Description : </label>
+                            <input type="text" class="formElement__input" required placeholder="Order ID" id="order_id">
+                            <br>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" id="addMoneyBtn" class="btn btn-primary calcBtn">Add money</button>
+                            </div>          
+                        </form>				
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="msgModal" tabindex="-1" role="dialog" aria-labelledby="msgModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="msgModalLabel">Send Message</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <tr>
+                            <td><label class="labels">Enter your message here....!</label></td>
+                            <td><textarea rows="6" cols="50" id="msgUser"></textarea></td>
+                        </tr>
+                        <br>
+                        <br>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" id="sendMsgBtn" class="btn btn-primary calcBtn" onclick="sendMessage(phoneNumber, '0')">Send Message</button>
+                    </div>          			
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="msgAllModal" tabindex="-1" role="dialog" aria-labelledby="msgModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="msgModalLabel">Send Message</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <tr>
+                            <td><label class="labels">Enter your message here....!</label></td>
+                            <td><textarea rows="6" cols="50" id="msgAllUser"></textarea></td>
+                        </tr>
+                        <br>
+                        <br>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" id="sendMsgBtn" class="btn btn-primary calcBtn" onclick="sendMessage(phoneAllnumber, '1')">Send Message</button>
+                    </div>          			
+                </div>
+            </div>
+        </div>
+
+        <script src="newContactDirectory.js"></script>
+
+    </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="ISO-8859-1">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Daily Sales</title>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="dailySales.css">
+        <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+        <script src="offer_var.js"></script>
+        <script src="checkLogin.js"></script>
+        <script src='checkView.js'></script>
+
+    </head>
+    <body>
+
+        <h1 class="heading">Daily Sales</h1>
+
+
+        <div>	
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Total orders</th>
+                        <th>Total sales</th>  
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                </tbody>
+            </table>
+
+            <div class="container ">
+                <div id="pagination-wrapper">
+                </div>
+            </div>  
+        </div>
+
+    </body>
+</html>

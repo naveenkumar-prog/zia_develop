@@ -1,0 +1,28 @@
+.delbtn{
+    background-color: rgb(236, 73, 73);
+    border: 0.5px solid black;
+    box-shadow: 0.5px 0.5px gray;
+    color: white;
+    border-radius: 3px;
+}
+
+.delbtn:hover{
+    background-color: red;
+}
+
+.currRowEdit{
+    color: blue;
+    font-style: italic;
+}
+
+.editbtn{
+    background-color: rgb(176, 223, 229);
+    border: 0.5px solid black;
+    box-shadow: 0.5px 0.5px gray;
+    font-size: 15px;
+    border-radius: 3px;
+}
+
+.editbtn:hover{
+    background-color: rgb(137,207,240);
+}

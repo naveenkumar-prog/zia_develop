@@ -1,0 +1,68 @@
+<!-- continue from banners.html 
+
+    onclick add banner  -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="title icon" href="images/zila3.png">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+        <title>Add Banner</title>
+        <script src="offer_var.js"></script>
+        <script src="addBanner.js"></script>
+
+        <!-- To Check Login -->
+
+        <script src="checkLogin.js"></script>
+
+        <!-- To check Authority -->
+
+        <script src='checkView.js'></script>
+
+    </head>
+    <body>
+        <style>
+            .input{
+                margin: 5px 0 5px;
+            }
+        </style>
+        <h1 class="container display-4">Add a new banner</h1>
+        <form class="container d-flex flex-column" onsubmit="addBanner(event)">
+            <label for="offerType" class="input">Offer Type:</label>
+            <select class="form-control input" id="offerType" required>
+                <option value="1">Offer</option>
+                <option value="2">Promotion</option>
+            </select>
+            <label for="brand" class="input">Brand:</label>        
+            <input class="form-control input" id="brand" type="text" required>
+            <label for="discountType" class="input">Discount Type:</label>
+            <select class="form-control input" id="discountType" required>
+                <option value="1">Percentage</option>
+                <option value="2">Money</option>
+            </select>
+            <label for="discount" class="input">Discount:</label>        
+            <input class="form-control input" id="discount" type="text" required>
+            <label for="categorylist" class="input">Category:</label>
+            <select class="form-control input" id="categorylist"></select>
+            <label for="lang" class="input">Language:</label>
+            <select class="form-control input" id="lang" required>
+                <option value="2">Zila English</option>
+                <option value="1">Zila Hindi</option>
+                <option value="6">Zcl English</option>
+                <option value="5">Zcl Hindi</option>
+            </select>
+            <label for="img" class="input">Image:</label>
+            <input class="form-control input" id="img" type="file"  accept="image/*" required >
+            <button class="btn btn-primary btn-block my-4" type="submit">Add</button>
+        </form>
+    </body>
+</html>

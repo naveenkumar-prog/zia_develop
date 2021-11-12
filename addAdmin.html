@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--disabled right click to prevent viewing page source-->
+<!--<html oncontextmenu="return false">-->
+<html>
+    <head>
+        <meta charset="ISO-8859-1">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="addNotifications.css">
+        <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+        <title>Add admin</title>
+        <script src="offer_var.js"></script>
+        <script src="checkLogin.js"></script>
+        <script src='checkView.js'></script>
+
+    </head>
+
+    <body>
+        <div class="header">
+            <h3>Add admin</h3>
+        </div>
+        <hr>
+        <div class="content">
+            <div class="form">
+                <table>
+                    <tr>
+                        <td><label class="labels">User name: </label></td>
+                        <td><input type="text" id="username" class="inputs" required></td>
+                    </tr>
+                    <tr>
+                        <td><label class="labels">Email: </label></td>
+                        <td><input type="email" id="email" class="inputs" required></td>
+                    </tr>
+                    <tr>
+                        <td><label class="labels">Password: </label></td>
+                        <td><input type="text" id="password" class="inputs" required></td>
+                    </tr>
+                    <tr>
+                        <td><label class="labels">Phone: </label></td>
+                        <td><input type="text" id="phone" class='inputs' required></td>
+                    </tr>
+                </table>
+                <hr class="line">
+                <div class="submit-btn">
+                    <input type="button" class="add-btn" onclick="addEmployee()" value="Submit">
+                </div>
+            </div>
+        </div>
+
+        <script src='addAdmin.js'></script>
+
+    </body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Inventory upload</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <link rel= "stylesheet" href="multipleProductsUpload.css">
+        <link rel="title icon" href="images/zila3.png">
+        <script
+            type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.15.3/xlsx.full.min.js"
+        ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js" integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ==" crossorigin="anonymous"></script>
+
+        <!-- To check Login Details -->
+
+        <script src="checkLogin.js"></script>
+
+        <!-- To Check Authority Details -->
+
+        <script src='checkView.js'></script>
+    </head>
+    <body class="container text-center">
+        <style>
+            body{
+                background: #4158d0;
+            }
+            .main{
+                background-color: white;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+        </style>
+        <nav class="navbar justify-content-center" >
+            <span class=""><img style="width: 75px; height: 75px;" src="images/zila3.png"></span>
+        </nav>
+        <div id="spin" class="spin" style="display: none;">
+            <div style="color: white; opacity:1; font-weight:600; margin:15px">Uploading product <span id="num">0</span> of <span id="all">0</span></div>
+            <div id="cssload-wrapper">
+                <div id="cssload-border">
+                    <div id="cssload-whitespace">
+                        <div id="cssload-line">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Body -->
+
+        <div class="main m-5 p-5 text-center">
+            <div>
+                <h3 class="h4">Procedure:</h3>
+                <ul style="display: flex;
+                    flex-direction: column;
+                    align-items: flex-start; font-size:14px;">
+                    <li class="my-2">Download the template by clicking on the "Download template here" button below.</li>
+                    <li class="my-2">Go to the <i>"Upload Inventory"</i> sheet in the downloaded file and enter inventory data into it.</li>
+                    
+                    <li class="my-2">For adding details of product, enter data into the <i>"Upload Product"</i> sheet with the corresponding serial number. <span style="font-weight:500">Every row of data in the details sheet must have the serial number of the corresponding product</span></li>
+                    
+                    <li class="my-2">After listing all products and their data into the downloaded template, upload the file below (under the ".xlsx file" label).</li>
+                    <li class="my-2">In the Excel Sheet the should be filled according to the following Rules:</li>
+                    <li class="my-2">There are 3 Types in the Fields(Columns):-</li>
+                    <li class="my-2"><b>TYPE 1 :</b> Compulsory Fields, Data must be filled in these fields </li>
+                    <li class="my-2"><b>TYPE 2 :</b> Optional Fields, Data may be filled or not in these fields but not compulsory</li>
+                    <li class="my-2"><b>TYPE 3 :</b> These Fileds are also Optional. But if any one of the fields under any set is filled then remaining all fields under Corresponding set also must be filled  </li>
+                    <li class="my-2"><b>TYPE 4 :</b> Old value will be overwritten if you change this, But this field is Compulsory. So, add '0' to keep old value  </li><br><br><hr>
+                    <b>The following are the fields with their type. Please fill the fields according to their type as mentioned above:-</b>
+
+                    <li class="my-2"><b>TYPE 1 :</b> Fields are Product_Id,Seller_Name,Seller_Mobile,Seller_Address,Quantity, Quantity_Unit, Seller_Price_Per_Unit_Without_tax_and_offer </li>
+                    <li class="my-2"><b>TYPE 2 :</b> Field is  IGST </li>
+                    <li class="my-2"><b>TYPE 3(Set-1) :</b> Fields are CGST, SGST  </li>
+                    <li class="my-2"><b>TYPE 3(Set-2) :</b> Fields are MRP, Zila_Offer, CP_Commission </li>
+                    <li class="my-2"><b>TYPE 4 :</b> Field is Threshold </li>
+
+                    <li class="my-2">Click on "Upload" button and wait until all the products are uploaded.</li>
+                    <li class="my-2">If there is an error in any one the inventory items while bulk upload, the error will be shown off. But Other Items(Correct items) will get added</li>
+                    <li class="my-2">So, while make correction, try not to add those items which are get already added</li>
+                    <li class="my-2">And Please Make sure that all Comulsory fields have been added in each row before upload</li>
+
+                    <li class="my-2">Keep the file name as ZilaUploadInventory.</li>
+                    <li class="my-2">Keep the sheet in file as it is don't rename/delete them .</li>
+                    <li class="my-2">If Sheet name and the fields get changed, then items won't get add .</li>
+                </ul>
+            </div>
+            <p><b>Please Follow the Procedure Correctly, Otherwise the Items won't get add !!</b></p>
+
+            <p class="m-0 p-0" style="color: lightgray; font-size:12px" id="wait">Please wait while the template loads</p>
+            <button class="btn btn-success mx-5 mb-5" id="tmp" onclick="template()">Download Template here</button>
+
+            <div class="container" style="width: 70%">
+                <label for="fileInput"><b>.xlsx file</b></label>
+                <input class="form-control" id="fileInput" type="file" accept=".xlx, .xlsx"><br><br>
+            </div>
+            <button class="btn btn-primary mx-5"  id="convert">Upload</button>
+
+        </div>
+    </body>
+    <script src="addinventory.js"></script>
+    <script src="addinventory2.js"></script>
+    <script src="offer_var.js"></script>
+   
+</html>

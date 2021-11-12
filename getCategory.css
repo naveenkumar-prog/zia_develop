@@ -1,0 +1,165 @@
+*{
+    box-sizing: border-box;
+    outline: none;
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
+    /*overflow-y: hidden;*/
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 40px;
+}
+
+.heading{
+    margin: 0px;
+}
+
+.rearrCatBtn, .newCatBtn{
+    border: 0.5px solid black;
+    box-shadow: 0.5px 0.5px gray;
+    font-size: 15px;
+    border-radius: 3px;
+    transition: all 0.2s;
+}
+
+.rearrCatBtn:hover, .newCatBtn:hover{
+    box-shadow: 1px 1px 1px gray;
+}
+
+.table{
+    border-radius: 100px;
+}
+
+#myTable{
+    overflow-y: auto;
+}
+
+tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(odd){
+    background-color: #f8f8f8;
+}
+
+td{
+    border: 0.1px solid rgba(128,128,128,0.1);
+    padding: 20px;
+}
+
+th{
+    position: sticky;
+    top: 0px;
+    z-index: 1;
+    background-color: rgb(126, 133, 175);
+    border: 0.1px solid rgba(128,128,128,0.9);
+}
+
+tr:hover{
+    background-color: #ddd;
+}
+
+.categoryImage{
+    width: 100px;
+    height: 100px;
+}
+
+.currRowEdit{
+    color: blue;
+    font-style: italic;
+}
+
+.editbtn{
+    background-color: rgb(176, 223, 229);
+    border: 0.5px solid black;
+    box-shadow: 0.5px 0.5px gray;
+    font-size: 15px;
+    border-radius: 3px;
+}
+
+.editbtn:hover{
+    background-color: rgb(137,207,240);
+}
+
+.delbtn{
+    background-color: rgb(236, 73, 73);
+    border: 0.5px solid black;
+    box-shadow: 0.5px 0.5px gray;
+    color: white;
+    border-radius: 3px;
+}
+
+.delbtn:hover{
+    background-color: red;
+}
+
+.imgbtn {
+    font-size: 1em;
+    text-decoration: none;
+    font-weight: 600;
+    padding: .35em 0.8em;
+    background-color: #eaeef1;
+    background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.1));
+    border-radius: 3px;
+    color: rgba(0,0,0,.8);
+    text-shadow: 0 1px 1px rgba(255,255,255,.7);
+    box-shadow: 0 0 0 1px rgba(0,0,0,.2), 0 1px 2px rgba(0,0,0,.2), inset 0 1px 2px rgba(255,255,255,.7);
+    cursor: pointer;
+    width: 75px;
+    margin: 5px;
+}
+
+.imgbtn:hover{
+    background-color: #fff;
+}
+
+.imgbtn:active{
+    background-color: #d0d3d6;
+    background-image: linear-gradient(rgba(0,0,0,.1), rgba(0,0,0,0));
+    box-shadow: inset 0 0 2px rgba(0,0,0,.2), inset 0 2px 5px rgba(0,0,0,.2), 0 1px rgba(255,255,255,.2);
+}
+
+.viewSubCat {
+    border-radius: 4px;
+    background-color: #f4511e;
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 15px;
+    padding: 10px;
+    width: 80px;
+    transition: all 0.4s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.viewSubCat span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.viewSubCat span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.viewSubCat:hover span {
+    padding-right: 20px;
+}
+
+.viewSubCat:hover span:after {
+    opacity: 1;
+    right: 0;
+}

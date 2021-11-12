@@ -1,0 +1,219 @@
+<!-- Profit Calculator Page -->
+
+<!DOCTYPE html>
+<head>
+    <title>Profit Calculator</title>
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    <script src="checkLogin.js"></script>
+    <script src='checkView.js'></script>
+    <link rel="title icon" href="images/zila3.png">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
+</head>
+
+<body>
+    <!-- Css  -->
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .main{
+            display: flex;
+            margin-top: 50px;
+            width: 80%;
+            justify-content: space-around;
+            align-items: center;
+        }
+        #commissionDiv {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 30px;
+            margin: 10px;
+            border: 1px solid rgb(225, 225, 225, 0.5);
+
+        }
+        .outline {
+            margin: 15px;
+            padding: 20px;
+            border-radius: 7px;
+            box-sizing: border-box;
+            box-shadow: 0 10px 24px rgba(0,0,0,0.25), 0 8px 8px rgba(0,0,0,0.22);
+        }
+        #form{
+            margin: 10px;
+            padding: 25px;
+            box-sizing: border-box;
+            border: 1px solid rgb(225, 225, 225, 0.5);
+            box-shadow: 0.8px 0.8px 0.8px lightgray;
+        }
+        .formElement__label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .calcBtn {
+            color: #fff;
+            background: #55a1ff;
+            margin: 0px;
+            margin-top: 10px;
+            border: 0;
+            outline: 0;
+            width: 100%;
+            height: 35px;
+            font-size: 16px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .formElement__input{
+            outline: none;
+            border: 1px solid #ccc;
+            background-color: white;
+            font: inherit;
+            padding: 6px 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .formElement__input:focus {
+            outline: none;
+            background-color: rgb(255, 240, 245);
+        }
+        .logo{
+            margin: 5px;
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            box-shadow: 5px 5px 5px #ccc;
+            border-radius:15px
+        }
+        hr {
+            width: 100%;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            border: 0;
+            height: 1px;
+            background: #333;
+            background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc);
+            background-image: -moz-linear-gradient(left, #ccc, #333, #ccc);
+            background-image: -ms-linear-gradient(left, #ccc, #333, #ccc);
+            background-image: -o-linear-gradient(left, #ccc, #333, #ccc);
+        }
+        #formOutline{
+            flex: 0.3;
+        }
+        #commissionDiv {
+            flex: 0.5;
+        }
+
+    </style>
+
+    <!-- Main Content  -->
+
+    <div class="header d-flex">
+        <a  href="#"><img class="logo" src="images/zila.png"></a>
+    </div>
+    <div class="main container"> 
+        <div class="outline" id="formOutline">
+            <form id="form" onsubmit="calculate(event);">
+                <label for="cost" class="formElement__label" >Cost (₹): </label>
+                <input type="number" class="formElement__input" placeholder="0" id="cost" required>
+                <br>
+                <br>
+                <label for="mrp" class="formElement__label">MRP (₹): </label>
+                <input type="number" class="formElement__input" placeholder="0" id="mrp" required>
+                <br>
+                <br>
+                <label for="weight" class="formElement__label">Weight(gms): </label>
+                <input type="number" class="formElement__input" placeholder="0" id="weight" required>
+                <br>
+                <br>
+                <button type="submit" class="calcBtn">Calculate profit</button>           
+            </form>          
+        </div>
+        <div class="outline"  id= "commissionDiv">
+            <h2 class="display-2" style="margin: 5px;">Charges breakdown</h2>
+            <br>
+            <p >Zila Commission (20% on Invoice amount)<strong><span id="zilaCommission"></span></strong></p>
+            <hr>
+            <p >GST (18% on Zila Commission)<strong><span id="gst"></span></strong></p>
+            <hr>
+            <p>Transaction Charges (2% on Invoice amount)<strong><span id="transaction"></span></strong></p>
+            <hr>
+            <p>Delivery Cost<strong><span id="delivery"></span></strong></p>
+            <hr>
+            <p id="profit" style="font-weight: 700;"></p>
+        </div>
+    </div>
+
+
+    <!-- Javascript -->
+
+
+    <script>
+
+        // On click submit 
+
+        function calculate() {
+            event.preventDefault();
+
+            //document.getElementById("commissionDiv").innerHTML = "";
+            //document.getElementById("commissionDiv").style.display="block";
+
+            var cost = parseFloat(document.getElementById("cost").value);
+            var mrp = parseFloat(document.getElementById("mrp").value);
+            var weight = parseInt(document.getElementById("weight").value);
+
+            var zilaCommission = document.getElementById("zilaCommission");
+            var zcamt = 0.20 * mrp;  // 20 percent
+            zilaCommission.innerHTML = " = ₹" + zcamt.toFixed(2);
+
+            var gst = document.getElementById("gst");
+            var gstamt = 0.18 * zcamt;
+            gst.innerHTML = " = ₹" + gstamt.toFixed(2);
+
+
+            var transaction = document.getElementById("transaction");
+            var transactionamt = 0.02 * mrp; // 0.2 percent
+            transaction.innerHTML = " = ₹" + transactionamt.toFixed(2);
+            //transactionText.innerHTML += ;
+
+            var delivery = document.getElementById("delivery");
+            var deliveryCost;
+            if (weight > 0 && weight <= 500)
+                deliveryCost = 50;
+            else if (weight > 500 && weight <= 1000)
+                deliveryCost = 89;
+            else if (weight > 1000 && weight <= 1500)
+                deliveryCost = 128;
+            else if (weight > 1500 && weight <= 2000)
+                deliveryCost = 167;
+            else if (weight > 2000 && weight <= 2500)
+                deliveryCost = 206;
+            else if (weight > 2500 && weight <= 3000)
+                deliveryCost = 245;
+            else
+                deliveryCost = 245;
+            delivery.innerHTML = " = ₹" + deliveryCost.toFixed(2);
+
+            var profit = document.getElementById("profit");
+            profit.innerHTML = "";
+            var profitamt = (mrp - cost) - deliveryCost - zcamt - gstamt - transactionamt;   // Final Profit
+            profit.innerHTML += "Total Profit = ₹" + profitamt.toFixed(2);
+
+            //commissionDiv.appendChild(zilaCommissionText);
+            //commissionDiv.appendChild(gstText);
+            //commissionDiv.appendChild(transactionText);
+            //commissionDiv.appendChild(profitText);
+        }
+    </script>
+</body>
+</html>

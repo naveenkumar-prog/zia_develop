@@ -1,0 +1,9 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+}
+
+td{
+    border: 0.5px solid gray;
+}

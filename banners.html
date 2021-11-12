@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="title icon" href="images/zila3.png">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="banners.css">
+        <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+        <title>Banners</title>
+        <script src="offer_var.js"></script>
+
+        <!-- To Check Login -->
+
+        <script src="checkLogin.js"></script>
+
+        <!-- To check Authority -->
+
+        <script src='checkView.js'></script>
+        <script src='banners.js'></script>
+
+        <style>
+            .uploadLink{
+                display:flex !important;
+            }
+        </style>
+
+    </head>
+    <body>
+
+        <div class="top" style="margin: 25px;">
+            <div class="uploadLink">
+                <button onclick="window.open('addBanner', '_blank')" class="addProdBtn">Add a new banner</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;<button onclick="getEnglishBanner()" class="addProdBtn" id="english">Zila English Banners</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;<button onclick="getHindiBanner()" class="addProdBtn" id="hindi">Zila Hindi Banners</button>
+                 &nbsp;&nbsp;&nbsp;&nbsp;<button onclick="getZclEnglishBanner()" class="addProdBtn" id="zclenglish">ZCL English Banners</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;<button onclick="getZclHindiBanner()" class="addProdBtn" id="zclhindi">ZCL Hindi Banners</button>
+
+            </div>
+        </div>
+
+        <!-- If english banners -->
+
+        <div id="englishBanners">
+            <table class="table table-striped"  style="min-width: max-content;">
+                <thead class="bg-info" style="min-width: max-content;">
+                    <tr style="min-width: max-content;">
+                        <th>Options</th>
+                        <th>Offer ID</th>
+                        <th>Image</th>
+                        <th>Brand</th>
+                        <th>Category ID</th>
+                        <th>Discount</th>
+                        <th>Discount Type</th>
+                        <th>Offer Type</th>
+                        <th>Operation value</th> 
+                    </tr>
+                </thead>
+                <tbody id="myTable" style="min-width: max-content;">
+                </tbody>
+            </table>    
+        </div>
+
+        <!-- Onclick Hindi Banners -->
+
+        <div id="hindiBanners">
+            <table class="table table-striped">
+                <thead class="bg-info">
+                    <tr>
+                        <th>Options</th>
+                        <th>Offer ID</th>
+                        <th>Image</th>
+                        <th>Brand</th>
+                        <th>Category ID</th>
+                        <th>Discount</th>
+                        <th>Discount Type</th>
+                        <th>Offer Type</th>
+                        <th>Operation value</th> 
+                    </tr>
+                </thead>
+                <tbody id="myTables">
+                </tbody>
+            </table>    
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="contactList.css">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+        <title>Contact list</title>
+        <script src="checkLogin.js"></script>
+    </head>
+    <body>
+
+        <div class="header">
+            <h2 id="zclName" class="heading"></h2>
+        </div>
+       <div id ="load"></div>
+       <div id ='main'>
+            <div  class="col-xl-3 col-sm-6 p-2" id="top">
+        <button type="button" class="m-5 btn btn-primary btn-small" data-toggle="modal" data-target="#msgModal">
+            Send Message
+        </button>
+    </div>
+        
+<!--        <div class="modal-body"><p style="text-align:right;"><b><h3> Total Contacts<p id='tot_contact'>0</p></h3></b></p> </div>  -->
+ <div class="selectLanguage" id="selectLanguage">
+                <label for="language" class="labelLang">Total Contacts  </label></div>
+                <p id="filter" class="filter"></p><p id="total_contact"></p>
+
+
+
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Number</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+            </tbody>
+        </table>
+
+        <div class="container ">
+            <div id="pagination-wrapper"></div>
+        </div>
+        <div class="modal fade" id="msgModal" tabindex="-1" role="dialog" aria-labelledby="msgModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="msgModalLabel">Send Message</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <tr>
+                            <td><label class="labels">Enter your message here....!</label></td>
+                            <td><textarea rows="6" cols="50" id="msgUser"></textarea></td>
+                        </tr>
+                        <br>
+                        <br>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" id="sendMsgBtn" class="btn btn-primary calcBtn" onclick="sendMsg(phonenumber)">Send Message</button>
+                    </div>          			
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+        <script src="offer_var.js"></script>
+
+        <script src="contactList.js"></script>
+
+    </body>
+</html>

@@ -1,0 +1,64 @@
+<!-- Notification Page -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="ISO-8859-1">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Notifications</title>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="getNotifications.css">
+        <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+
+        <!-- To Check Login -->
+
+        <script src="checkLogin.js"></script>
+
+        <!-- To check Authority -->
+
+        <script src='checkView.js'></script>
+
+    </head>
+    <body>
+
+        <div class="header">
+            <h1 class="heading">All notifications</h1>
+            <button class="sendNotifNowBtn"><a href="sendNotification.html" target="_blank" style="text-decoration: none; color: black;">Send a notification now</a></button>
+            <button class="newNotifBtn" onclick='location.href = "addNotifications.html"'>Add a new notification</button>
+        </div>
+        <table class="table" id="table-1">
+            <thead>
+                <tr class="tableHead">
+                    <th>SNO</th>
+                    <th>Options</th>
+                    <th>Notification Id</th>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Topic</th>
+                    <th>Description</th>
+                    <th>Image URL</th>
+                    <th>Send Notification</th>
+                </tr>
+            </thead>
+            <tbody id="myTable">
+            </tbody>
+        </table>
+        <script src="offer_var.js"></script>
+
+        <script src="getNotifications.js"></script>
+
+    </body>
+</html>

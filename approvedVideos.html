@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="ISO-8859-1">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="videoApprove.css">
+        <title>Approved videos</title>
+        <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+
+        <!-- To check Login -->
+        <script src="checkLogin.js"></script>
+
+        <!-- To check Authority access -->
+        <script src='checkView.js'></script>
+        <script src="offer_var.js"></script>
+
+    </head>
+
+    <body>
+
+        <div class="header">
+            <h1>Approved videos</h1>
+            <p>View all products <input type="button" value="View" onclick="window.open('editProduct.html', '_blank')"></p>
+            <p>View rejected videos <input type="button" value="View" onclick="window.open('rejectedVideos.html', '_blank')"></p>
+
+        </div>
+
+        <div >
+            <table class="table" id='table'>
+                <thead>
+                    <tr>
+                        <th>SNO</th>
+                        <th>Title</th>
+                        <th>Category Id</th>
+                        <th>Video</th>
+                        <th>Product Details</th>
+                        <!-- <th>Add product</th> -->
+                        <th>Created on</th>
+                        <th>Seller Id</th>
+                        <th>Seller Name</th>
+                        <th>Thumbnail</th>
+                        <th>Status</th>
+                        <th>Change Status</th>                
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                </tbody>
+            </table>			
+        </div>
+        <script src="approvedVideos.js"></script> 
+    </body>
+</html>

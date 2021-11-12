@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="ISO-8859-1">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Add product details</title>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="addProductDetails.css">
+        <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+        <script src="offer_var.js"></script>
+        <script src="checkLogin.js"></script>
+
+    </head>
+    <body>
+
+        <div class='addColorSizeDiv'>
+            <div class='colorDiv'>
+                <div class='addColorDiv'>
+                    <h4>Add color</h4>
+                    <input type='text' id='addColorInput'/>
+                    <button onclick='addColor()'>Add</button> 
+                </div>
+                <div class='colorListDiv'></div>
+            </div>
+            <div class='sizeDiv'>
+                <div class='addSizeDiv'>
+                    <h4>Add size</h4>
+                    <input type='text' id='addSizeInput'/>
+                    <button onclick='addSize()'>Add</button> 
+                </div>
+                <div class='sizeListDiv'></div>
+            </div>
+        </div>
+
+        <div id='prodTable'></div>
+
+        <script src='addProductDetails.js'></script>
+
+    </body>
+</html>

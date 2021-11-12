@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="ISO-8859-1">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Categories</title>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!--<link href="css/style.css" rel="stylesheet">-->
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="getCategory.css">
+        <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+
+        <!-- To check Login -->
+        <script src="checkLogin.js"></script>
+        <!-- To check Authority access -->
+        <script src='checkView.js'></script>
+
+    </head>
+    <body>
+
+        <div class="header">
+            <h1 class="heading">Categories</h1>
+            <button class="rearrCatBtn" onclick='location.href = "categories.html"'>Rearrange categories by rank</button>
+            <button class="newCatBtn" onclick='location.href = "addCategory.html"'>Add a new category</button>
+        </div>
+        <table class="table" id="table-1">
+            <thead>
+                <tr class="tableHead">
+                    <th>SNO</th>
+                    <th>Options</th>
+                    <th>Category Id</th>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Hindi name</th>
+                    <th>Tamil name</th>
+                    <th>Min age</th>
+                    <th>Max age</th>
+                    <th>Of videos</th>
+                    <th>Rank</th>
+                    <th>Sub categories</th>
+                    <th>Available in</th>
+                    <th>Offer Image</th>
+                    <th>Offer %</th>
+                    <th>Offer status</th>
+                </tr>
+            </thead>
+            <tbody id="myTable">
+            </tbody>
+        </table>
+
+        <script src="offer_var.js"></script>
+        <script src="getCategory.js"></script>
+    </body>
+</html>

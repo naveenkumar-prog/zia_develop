@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="title icon" href="images/zila3.png">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
+        <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+        <title>Zila Ambassador Stats</title>
+        <script src="offer_var.js"></script>
+        <script src="checkLogin.js"></script>
+        <script src='checkView.js'></script>
+
+
+
+    </head>
+    <body>
+        <style>
+            .spin {
+                background:lightgray;
+                color: #666666;
+                position: fixed;
+                height: 100%;
+                width: 100%;
+                z-index: 5000;
+                top: 0;
+                left: 0;
+                float: left;
+                text-align: center;
+                padding-top: 25%;
+                opacity: .80;
+            }
+        </style>
+
+        <div class="spin" id="overlay">
+            <div class="spinner-border text-dark" style="width:65px; height: 65px"></div>
+        </div>
+        <h2 style='padding:5px'>Zila Ambassador Statistics</h2>
+        <table class="table table-striped">
+            <thead class="bg-info">
+                <tr>
+                    <th>Total Ambassadors</th>
+                    <th>Total amount</th>
+                    <th>Total delivered amount</th>
+                    <th>Total number of orders</th>
+                </tr>
+            </thead>
+
+            <tbody id="myTable">
+            </tbody>
+        </table>
+
+        <script src="ambassadorStats.js"></script>
+    </body>
+</html>

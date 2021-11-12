@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--disabled right click to prevent viewing page source-->
+<!--<html oncontextmenu="return false">-->
+<html>
+    <head>
+        <meta charset="ISO-8859-1">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="title icon" href="images/zila3.png">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <!-- <link rel="stylesheet" href="addNotifications.css"> -->
+        <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+        <title>Activity</title>
+        <script src="offer_var.js"></script>
+
+        <!-- To check login activity -->
+        <script src="checkLogin.js"></script>
+
+        <!-- To check Authority access -->
+        <script src='checkView.js'></script>
+
+    </head>
+
+    <body>
+
+        <table class="table" id="table">
+            <!--
+            <div id="myData"></div>
+             onchange="window.location.reload()"
+            -->
+            <thead>
+                <tr>
+            <div class="spin" id="overlay" style="display: none;">
+                <div class="spinner-border text-dark" style="width:65px; height: 65px"></div>
+            </div>
+            <th>Activity</th>
+            <th>Time</th>
+            <th>User Id</th>            
+        </tr>
+    </thead>
+    <tbody id="myTable">
+    </tbody>
+</table>
+
+</body>
+</html>

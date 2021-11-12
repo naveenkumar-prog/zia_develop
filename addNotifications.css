@@ -1,0 +1,62 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url("images/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.header{
+    margin-left: 80px;
+    color: white;
+}
+
+.content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.form{
+    padding: 35px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: rgba(245, 245, 245, 0.65);
+    border-radius: 10px;
+}
+.labels{
+    font-size: 18px;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.inputs{
+    height: 25px;
+    width: 250px;
+    margin-top: 15px;
+}
+
+textarea{
+    margin-top: 15px;
+}
+
+tr{
+    margin-top: 20px;
+}
+
+.form .chooseImage{
+    padding-top: 12px;
+}
+
+.content .options{
+    margin-left: 15px;
+}
+
+.send-btn{
+    display:flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 20px;
+    margin-right: 20px;
+}
